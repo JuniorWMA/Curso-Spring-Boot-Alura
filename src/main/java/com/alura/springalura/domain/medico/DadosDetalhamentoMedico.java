@@ -1,6 +1,6 @@
-package com.alura.springalura.medico;
+package com.alura.springalura.domain.medico;
 
-import com.alura.springalura.endereco.Endereco;
+import com.alura.springalura.domain.endereco.Endereco;
 
 public record DadosDetalhamentoMedico(Long id, String nome, String email, String crm, String telefone, Especialidade especialidade, Endereco endereco) {
 

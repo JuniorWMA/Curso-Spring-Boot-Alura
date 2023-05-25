@@ -18,12 +18,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.util.UriComponentsBuilder;
 
-import com.alura.springalura.medico.DadosAtualizacaoMedico;
-import com.alura.springalura.medico.DadosCadastroMedico;
-import com.alura.springalura.medico.DadosDetalhamentoMedico;
-import com.alura.springalura.medico.DadosListagemMedico;
-import com.alura.springalura.medico.Medico;
-import com.alura.springalura.medico.MedicoRepository;
+import com.alura.springalura.domain.medico.DadosAtualizacaoMedico;
+import com.alura.springalura.domain.medico.DadosCadastroMedico;
+import com.alura.springalura.domain.medico.DadosDetalhamentoMedico;
+import com.alura.springalura.domain.medico.DadosListagemMedico;
+import com.alura.springalura.domain.medico.Medico;
+import com.alura.springalura.domain.medico.MedicoRepository;
 
 import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
@@ -49,8 +49,8 @@ public class MedicoController {
 
     @GetMapping
     public ResponseEntity<Page<DadosListagemMedico>> listar(@PageableDefault(size = 10, sort = {"nome"}) Pageable paginacao) {
-        var page =  medicoRepository.findAll(paginacao).map(DadosListagemMedico::new);
-        return ResponseEntity.ok(page);
+        var lista = medicoRepository.findAllByAtivoTrue(paginacao).map(DadosListagemMedico::new);
+        return ResponseEntity.ok(lista);
     }
 
     @PutMapping

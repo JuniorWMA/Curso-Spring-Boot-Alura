@@ -1,4 +1,4 @@
-package com.alura.springalura.endereco;
+package com.alura.springalura.domain.endereco;
 
 import jakarta.persistence.Embeddable;
 import lombok.AllArgsConstructor;

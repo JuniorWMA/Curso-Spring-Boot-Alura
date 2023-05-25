@@ -1,6 +1,6 @@
-package com.alura.springalura.paciente;
+package com.alura.springalura.domain.paciente;
 
-import com.alura.springalura.endereco.Endereco;
+import com.alura.springalura.domain.endereco.Endereco;
 
 public record PacienteDetalhamento (Long idPaciente, String nome, String email, String telefone, Boolean ativo, Endereco endereco) {
 

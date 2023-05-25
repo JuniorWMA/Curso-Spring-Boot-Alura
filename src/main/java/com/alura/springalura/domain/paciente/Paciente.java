@@ -1,7 +1,7 @@
-package com.alura.springalura.paciente;
+package com.alura.springalura.domain.paciente;
 
-import com.alura.springalura.endereco.Endereco;
-import com.alura.springalura.medico.DadosCadastroMedico;
+import com.alura.springalura.domain.endereco.Endereco;
+import com.alura.springalura.domain.medico.DadosCadastroMedico;
 
 import jakarta.persistence.Embedded;
 import jakarta.persistence.Entity;

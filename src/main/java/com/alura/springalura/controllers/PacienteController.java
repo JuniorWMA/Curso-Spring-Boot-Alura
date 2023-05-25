@@ -19,11 +19,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.util.UriComponentsBuilder;
 
-import com.alura.springalura.paciente.Paciente;
-import com.alura.springalura.paciente.PacienteAtualizacao;
-import com.alura.springalura.paciente.PacienteCadastro;
-import com.alura.springalura.paciente.PacienteDetalhamento;
-import com.alura.springalura.paciente.PacienteRepositorio;
+import com.alura.springalura.domain.paciente.Paciente;
+import com.alura.springalura.domain.paciente.PacienteAtualizacao;
+import com.alura.springalura.domain.paciente.PacienteCadastro;
+import com.alura.springalura.domain.paciente.PacienteDetalhamento;
+import com.alura.springalura.domain.paciente.PacienteRepositorio;
 
 import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
@@ -53,7 +53,7 @@ public class PacienteController {
 
     @GetMapping("/lista-pag") 
     public ResponseEntity<Page<PacienteDetalhamento>> listarPaginada(@PageableDefault(size = 10, sort = {"nome"}) Pageable paginacao){
-        var page = repositorio.findAll(paginacao).map(PacienteDetalhamento::new);
+        var page = repositorio.findAllByAtivoTrue(paginacao).map(PacienteDetalhamento::new);
         return ResponseEntity.ok(page);
     }
         
@@ -66,6 +66,7 @@ public class PacienteController {
 
     }
      @DeleteMapping("/{idPaciente}")
+     @Transactional
     public ResponseEntity<?> deletar(@PathVariable Long idPaciente) {
         var paciente = repositorio.getReferenceById(idPaciente);
         paciente.excluir();

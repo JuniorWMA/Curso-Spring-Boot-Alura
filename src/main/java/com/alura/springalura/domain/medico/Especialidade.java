@@ -1,4 +1,4 @@
-package com.alura.springalura.medico;
+package com.alura.springalura.domain.medico;
 
 public enum Especialidade {
     ORTOPEDIA,

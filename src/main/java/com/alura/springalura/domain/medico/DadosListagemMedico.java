@@ -1,4 +1,4 @@
-package com.alura.springalura.medico;
+package com.alura.springalura.domain.medico;
 
 public record DadosListagemMedico(Long id,String nome, String email, String crm, Especialidade especialidade) {
     
