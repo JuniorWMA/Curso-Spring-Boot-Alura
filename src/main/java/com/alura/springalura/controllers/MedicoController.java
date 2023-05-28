@@ -2,6 +2,9 @@ package com.alura.springalura.controllers;
 
 
 
+import java.util.List;
+import java.util.stream.Stream;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -50,6 +53,11 @@ public class MedicoController {
     @GetMapping
     public ResponseEntity<Page<DadosListagemMedico>> listar(@PageableDefault(size = 10, sort = {"nome"}) Pageable paginacao) {
         var lista = medicoRepository.findAllByAtivoTrue(paginacao).map(DadosListagemMedico::new);
+        return ResponseEntity.ok(lista);
+    }
+    @GetMapping("/listar-todos")
+    public ResponseEntity<Stream<DadosListagemMedico>> listar() {
+        var lista = medicoRepository.findAll().stream().map(DadosListagemMedico::new);
         return ResponseEntity.ok(lista);
     }
 

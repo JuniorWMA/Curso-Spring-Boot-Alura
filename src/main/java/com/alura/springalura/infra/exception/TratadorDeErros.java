@@ -1,4 +1,4 @@
-package com.alura.springalura.infra;
+package com.alura.springalura.infra.exception;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.FieldError;
